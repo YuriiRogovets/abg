@@ -9,29 +9,8 @@ import { getPhotosByQuery } from "../servises/api";
 import ImageModal from "../ImageModal/ImageModal";
 import "./App.css";
 
-function App() {
-  const [photos, setPhotos] = useState([]);
-  const [loading, setLoading] = useState(false);
-  const [loadMoreBtn, setLoadMoreBtn] = useState(false);
-  const [isError, setIsError] = useState(false);
-  const [searchQuery, setSearchQuery] = useState("");
-  const [page, setPage] = useState(1);
-  const [isOpenModal, setIsOpenModal] = useState(false);
-  const [selectedPhoto, setSelectedPhoto] = useState({});
 
-  const onSetSearchQuery = (query) => {
-    setSearchQuery(query);
-    setPage(1);
-    setPhotos([]);
-  };
 
-  useEffect(() => {
-    if (searchQuery.trim() === "") {
-      return;
-    }
-    async function fetchDataByQuery() {
-      setLoading(true);
-      setIsError(false);
 
       try {
         const { data } = await getPhotosByQuery(searchQuery, page);
