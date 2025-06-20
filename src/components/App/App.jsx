@@ -1,65 +1,26 @@
-import { useEffect, useState } from "react";
-import ErrorMessage from "../ErrorMessage/ErrorMessage";
-import ImageGallery from "../ImageGallery/ImageGallery";
-import LoadMoreBtn from "../LoadMoreBtn/LoadMoreBtn";
-import Loader from "../Loader/Loader";
-import toast, { Toaster } from "react-hot-toast";
-import SearchBar from "../SearchBar/SearchBar";
-import { getPhotosByQuery } from "../servises/api";
-import ImageModal from "../ImageModal/ImageModal";
-import "./App.css";
+import { Navigate, Route, Routes } from "react-router-dom";
+import Navigation from "../Navigation/Navigation";
+import css from "./App.module.css";
+import HomePage from "../../pages/HomePage/HomePage";
+import PuttyPage from "../../pages/PuttyPage/PuttyPage";
+import CeilingPage from "../../pages/CeilingPage/CeilingPage";
+import Footer from "../Footer/Footer";
 
 
-
-
-      try {
-        const { data } = await getPhotosByQuery(searchQuery, page);
-
-        setPhotos((prevPhoto) => {
-          return [...prevPhoto, ...data.results];
-        });
-
-        setLoadMoreBtn(page < data.total_pages);
-      } catch (error) {
-        setIsError(true);
-      } finally {
-        setLoading(false);
-      }
-    }
-    fetchDataByQuery();
-  }, [searchQuery, page]);
-
-  const handleLoadMore = () => {
-    setPage(page + 1);
-  };
-
-  function openModal(state, photo) {
-    setIsOpenModal(true);
-    setSelectedPhoto(photo);
-    console.log(photo);
-  }
-
-  function closeModal() {
-    setIsOpenModal(false);
-  }
-
-  function onMessage() {
-    toast.error("The search field cannot be empty!");
-  }
+function App() {
 
   return (
-    <div>
-      <SearchBar onSetSearchQuery={onSetSearchQuery} onMessage={onMessage} />
-      <ImageGallery photos={photos} onSelect={openModal} />
-      <ImageModal
-        isOpen={isOpenModal}
-        photo={selectedPhoto}
-        closeModal={closeModal}
-      ></ImageModal>
-      {loading && <Loader />}
-      {isError && <ErrorMessage />}
-      {loadMoreBtn && <LoadMoreBtn onClick={handleLoadMore} />}
-      <Toaster position="top-center" />
+    <div className= {css.appWrapper}>
+      <Navigation />
+      <main className={css.mainContent} >
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/putty" element={<PuttyPage />} />
+          <Route path="/ceiling" element={<CeilingPage />} /> 
+          <Route path="*" element = {<Navigate to="/" />}/>
+        </Routes>
+      </main>
+      <Footer/>
     </div>
   );
 }

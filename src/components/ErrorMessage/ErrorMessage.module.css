@@ -1,6 +1,7 @@
 .errorText {
-  color: crimson;
-
-  font-size: 22px;
+  color: rgb(202, 7, 7);
+  padding-top: 60px;
+margin: 0 auto;
+  font-size: 28px;
   font-weight: 500;
 }

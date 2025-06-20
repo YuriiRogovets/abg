@@ -1,8 +1,10 @@
 import css from "../ErrorMessage/ErrorMessage.module.css";
-function ErrorMessage() {
+
+const ErrorMessage= () => {
   return (
     <p className={css.errorText}>
-      Whoops, something went wrong! Please try reloading this page!
+      Whoops, something went wrong! 
+      Please try reloading this page!
     </p>
   );
 }

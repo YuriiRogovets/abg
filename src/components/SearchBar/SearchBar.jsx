@@ -3,7 +3,7 @@ import css from "./SearchBar.module.css";
 
 const SearchBar = ({ onSetSearchQuery, onMessage }) => {
   return (
-    <header>
+    <div>
       <Formik
         initialValues={{
           query: "",
@@ -29,7 +29,7 @@ const SearchBar = ({ onSetSearchQuery, onMessage }) => {
           </button>
         </Form>
       </Formik>
-    </header>
+    </div>
   );
 };
 

@@ -1,0 +1,34 @@
+.wrapper{
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+    max-width: 1400px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+    background-color: #0099DE;
+
+}
+
+.logoImg{
+      max-width: 400px;       
+      width: 100%;
+      
+}
+
+.footerContent{
+    
+    width:100% ;
+    color: white;
+}
+
+.footerLink {
+
+   
+    color: white;
+}
+
+@media screen {
+    
+}
